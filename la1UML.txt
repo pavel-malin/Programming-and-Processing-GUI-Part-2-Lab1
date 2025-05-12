@@ -1,0 +1,76 @@
+@startuml
+
+'--- Классы фигур ---
+class Point2D {
+  - x: int
+  - y: int
+  + Point2D(int x = 0, int y = 0)
+  + getX(): int
+  + getY(): int
+  + addX(int dx): void
+  + addY(int dy): void
+}
+
+class Triangle {
+  - p1: Point2D
+  - p2: Point2D
+  - p3: Point2D
+  + Triangle(const Point2D& p1, const Point2D& p2, const Point2D& p3)
+  + getP1(): Point2D
+  + getP2(): Point2D
+  + getP3(): Point2D
+  + move(int dx, int dy): void
+}
+
+class Quadrilateral {
+  - topLeft: Point2D
+  - width: int
+  - height: int
+  + Quadrilateral(const Point2D& topLeft, int width, int height)
+  + move(int dx, int dy): void
+  + getTopLeft(): Point2D
+  + getWidth(): int
+  + getHeight(): int
+}
+
+class Square {
+  + Square(const Point2D& topLeft, int size)
+}
+Square --|> Quadrilateral
+
+'--- Классы GUI ---
+class Canvas {
+  - triangle: Triangle
+  - quad: Quadrilateral
+  - square: Square
+  - hasTriangle: bool
+  - hasQuad: bool
+  - hasSquare: bool
+  + setTriangle(const Triangle& triangle): void
+  + setQuadrilateral(const Quadrilateral& quad): void
+  + setSquare(const Square& square): void
+  + clear(): void
+  + paintEvent(QPaintEvent *event): void
+}
+Canvas --> Triangle
+Canvas --> Quadrilateral
+Canvas --> Square
+Canvas --|> QWidget
+
+class MainWindow {
+  - canvas: Canvas*
+  - dxInput: QLineEdit*
+  - dyInput: QLineEdit*
+  + MainWindow(QWidget *parent = nullptr)
+  + generateRandom(): void
+  + moveShapes(): void
+}
+MainWindow --> Canvas
+MainWindow --|> QMainWindow
+
+'--- Связи ---
+Triangle *-- Point2D : агрегация (3 точки)
+Quadrilateral *-- Point2D : агрегация (topLeft)
+Square *-- Point2D : агрегация (наследует от Quadrilateral)
+
+@enduml
