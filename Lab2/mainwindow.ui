@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+  <class>MainWindow</class>
+  <widget class="QMainWindow" name="MainWindow">
+    <property name="windowTitle">
+      <string>Enemy Editor</string>
+    </property>
+    <property name="geometry">
+      <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>800</width>
+        <height>600</height>
+      </rect>
+    </property>
+    <widget class="QWidget" name="centralWidget">
+      <layout class="QHBoxLayout" name="horizontalLayout">
+        <item>
+          <widget class="QListWidget" name="listEnemies"/>
+        </item>
+        <item>
+          <widget class="QGraphicsView" name="graphicsView"/>
+        </item>
+        <item>
+          <widget class="QWidget" name="controlPanel">
+            <layout class="QVBoxLayout" name="verticalLayout">
+              <item>
+                <widget class="QPushButton" name="btnAdd">
+                  <property name="text">
+                    <string>Add Enemy</string>
+                  </property>
+                </widget>
+              </item>
+              <item>
+                <widget class="QPushButton" name="btnRemove">
+                  <property name="text">
+                    <string>Remove Enemy</string>
+                  </property>
+                </widget>
+              </item>
+              <item>
+                <widget class="QPushButton" name="btnSave">
+                  <property name="text">
+                    <string>Save to JSON</string>
+                  </property>
+                </widget>
+              </item>
+              <item>
+                <widget class="QPushButton" name="btnLoad">
+                  <property name="text">
+                    <string>Load from JSON</string>
+                  </property>
+                </widget>
+              </item>
+            </layout>
+          </widget>
+        </item>
+      </layout>
+    </widget>
+  </widget>
+  <resources/>
+  <connections/>
+</ui>

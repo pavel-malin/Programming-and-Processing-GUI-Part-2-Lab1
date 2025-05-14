@@ -1,0 +1,65 @@
+@startuml
+
+class EnemyTemplate {
+    - name: QString
+    - iconName: QString
+    - baseline: int
+    - lifeModifier: double
+    - baseGold: int
+    - goldModifier: double
+    - spawnChance: double
+    + EnemyTemplate(...)
+    + getName(): QString
+    + getIconName(): QString
+    + toJson(): QJsonObject
+    + fromJson(): EnemyTemplate
+}
+
+class EnemyTemplateList {
+    - enemies: QList<EnemyTemplate>
+    + addEnemy(EnemyTemplate): void
+    + deleteEnemyByName(QString): void
+    + saveToJson(QString): void
+    + loadFromJson(QString): void
+    + getEnemyNames(): QList<QString>
+}
+
+class Icon {
+    - image: QPixmap
+    - position: QPoint
+    - size: QSize
+    + Icon(QString, QSize)
+    + getImage(): QPixmap
+    + setPosition(QPoint): void
+}
+
+class IconList {
+    - icons: QList<Icon>
+    - iconSize: QSize
+    + IconList(QSize)
+    + loadFromFolder(QString): void
+    + getIcons(): QList<Icon>
+}
+
+class MainWindow {
+    - ui: Ui::MainWindow
+    - scene: QGraphicsScene
+    - enemies: EnemyTemplateList
+    - icons: IconList
+    + onAddClicked(): void
+    + onRemoveClicked(): void
+    + onSaveClicked(): void
+    + onLoadClicked(): void
+    + updateEnemyList(): void
+    + displayIcons(): void
+}
+
+EnemyTemplateList "1" *-- "0..*" EnemyTemplate : агрегация
+IconList "1" *-- "0..*" Icon : агрегация
+
+MainWindow --> EnemyTemplateList : использует
+MainWindow --> IconList : использует
+MainWindow --> QListWidget : содержит
+MainWindow --> QGraphicsView : содержит
+
+@enduml

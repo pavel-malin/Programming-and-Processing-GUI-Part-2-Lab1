@@ -1,0 +1,12 @@
+@startuml
+actor User
+participant MainWindow
+participant EnemyTemplateList
+participant EnemyTemplate
+
+User -> MainWindow: Нажимает "Add Enemy"
+MainWindow -> EnemyTemplateList: addEnemy(EnemyTemplate)
+EnemyTemplateList -> EnemyTemplate: Создание объекта
+MainWindow -> MainWindow: updateEnemyList()
+MainWindow -> QListWidget: Добавление имени в список
+@enduml

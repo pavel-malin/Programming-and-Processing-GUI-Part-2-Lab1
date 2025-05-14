@@ -1,0 +1,20 @@
+[
+  {
+    "name": "Goblin",
+    "iconName": "goblin.png",
+    "baseline": 100,
+    "lifeModifier": 1.2,
+    "baseGold": 50,
+    "goldModifier": 1.5,
+    "spawnChance": 0.3
+  },
+  {
+    "name": "Orc",
+    "iconName": "orc.png",
+    "baseline": 150,
+    "lifeModifier": 1.5,
+    "baseGold": 75,
+    "goldModifier": 1.8,
+    "spawnChance": 0.2
+  }
+]
