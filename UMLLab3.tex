@@ -1,0 +1,38 @@
+@startuml
+
+class BigNumber {
+  - digits: QVector<int>
+  - BASE: int = 1000
+  + add()
+  + subtract()
+  + multiply()
+  + divide()
+}
+
+class Player {
+  - gold: BigNumber
+  - damage: BigNumber
+  - upgradeCost: BigNumber
+  + upgrade()
+}
+
+class Enemy {
+  - template: EnemyTemplate
+  - currentHealth: BigNumber
+  + takeDamage()
+}
+
+class MainWindow {
+  - player: Player
+  - currentEnemy: Enemy
+  - enemyTemplates: QList<EnemyTemplate>
+  + updateUI()
+}
+
+MainWindow --> Player
+MainWindow --> Enemy
+Enemy --> EnemyTemplate
+Player --> BigNumber
+Enemy --> BigNumber
+
+@enduml
