@@ -1,0 +1,5 @@
+/home/haskroms/Downloads/learnch/семестр 4 /Программирование и обработка графического интерфейса (часть 2) /pages/Labs/Решение/test/Curse/build/CMakeFiles/TaskScheduler.dir
+/home/haskroms/Downloads/learnch/семестр 4 /Программирование и обработка графического интерфейса (часть 2) /pages/Labs/Решение/test/Curse/build/CMakeFiles/edit_cache.dir
+/home/haskroms/Downloads/learnch/семестр 4 /Программирование и обработка графического интерфейса (часть 2) /pages/Labs/Решение/test/Curse/build/CMakeFiles/rebuild_cache.dir
+/home/haskroms/Downloads/learnch/семестр 4 /Программирование и обработка графического интерфейса (часть 2) /pages/Labs/Решение/test/Curse/build/CMakeFiles/TaskScheduler_autogen_timestamp_deps.dir
+/home/haskroms/Downloads/learnch/семестр 4 /Программирование и обработка графического интерфейса (часть 2) /pages/Labs/Решение/test/Curse/build/CMakeFiles/TaskScheduler_autogen.dir
