@@ -1,9 +1,0 @@
-<RCC>
-  <qresource prefix="/">
-    <file>icons/add.png</file>
-    <file>icons/delete.png</file>
-    <file>icons/sync.png</file>
-    <file>styles/mobile.css</file>
-    <file>styles/desktop.css</file>
-  </qresource>
-</RCC>
