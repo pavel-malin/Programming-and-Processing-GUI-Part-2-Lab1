@@ -1,0 +1,99 @@
+@startuml
+
+skinparam defaultFontName Arial
+skinparam classFontSize 14
+skinparam classAttributeFontSize 12
+skinparam shadowing false
+
+' Основные классы
+class QApplication <<(Q,#FF7700) Qt>> {
+  + exec(): int
+}
+
+class MainWindow {
+  - ui: Ui::MainWindow*
+  - tasks: QList<Task>
+  --
+  + MainWindow(QWidget*)
+  + ~MainWindow()
+  # on_addButton_clicked()
+  # on_deleteButton_clicked()
+  - loadTasks()
+  - saveTasks()
+  - updateTaskList()
+}
+
+class "Ui::MainWindow" <<generated>> {
+  - nameEdit: QLineEdit*
+  - descEdit: QLineEdit*
+  - dateTimeEdit: QDateTimeEdit*
+  - addButton: QPushButton*
+  - deleteButton: QPushButton*
+  - taskTable: QTableWidget*
+  --
+  + setupUi(QMainWindow*)
+}
+
+class Task {
+  - name: QString
+  - description: QString
+  - dateTime: QDateTime
+  --
+  + friend operator<<(QDataStream&, const Task&)
+  + friend operator>>(QDataStream&, Task&)
+}
+
+' Виджеты Qt
+class QLineEdit <<Qt Widget>> {
+  + text(): QString
+  + setText()
+}
+
+class QDateTimeEdit <<Qt Widget>> {
+  + dateTime(): QDateTime
+  + setDateTime()
+}
+
+class QPushButton <<Qt Widget>> {
+  + clicked()
+}
+
+class QTableWidget <<Qt Widget>> {
+  + setRowCount()
+  + insertRow()
+  + setItem()
+}
+
+class QMessageBox <<Qt Dialog>> {
+  + warning()
+}
+
+class QFile <<Qt I/O>> {
+  + open()
+  + close()
+}
+
+class QDataStream <<Qt I/O>> {
+  + operator<<()
+  + operator>>()
+}
+
+' Взаимосвязи
+QApplication "1" --> "1" MainWindow : creates
+
+MainWindow *-- "Ui::MainWindow" : composition
+MainWindow o-- "*" Task : aggregation
+
+MainWindow ..> QFile : uses
+MainWindow ..> QDataStream : uses
+MainWindow ..> QMessageBox : uses
+
+Task ..> QDataStream : friend
+Task ..> QDateTime : uses
+
+"Ui::MainWindow" *-- QLineEdit
+"Ui::MainWindow" *-- QDateTimeEdit
+"Ui::MainWindow" *-- QPushButton
+"Ui::MainWindow" *-- QTableWidget
+
+@enduml
